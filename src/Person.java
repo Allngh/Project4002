@@ -1,2 +1,4 @@
-public class Person {
+interface Person {
+    String name = null;
+
 }
