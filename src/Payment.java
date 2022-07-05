@@ -1,7 +1,9 @@
+import java.util.Comparator;
+
 public class Payment {
-    private final int price;
-    private final PaymentReson paymentReson;
-    private final Date date;
+     final int price;
+     final PaymentReson paymentReson;
+     final Date date;
 
     public Payment(int price, PaymentReson paymentReson, Date date) {
         this.price = price;
@@ -22,5 +24,29 @@ class Date{
         this.day = day;
         this.month = month;
         this.year = year;
+        if(day > 31)this.day = 31;
+        if(month > 12)this.month = 12;
+    }
+
+    public int compare(Date date){
+        if(year > date.year){
+            return 1;
+        }else if(year == date.year){
+            if(month>date.month){
+                return 1;
+            }else if (month == date.month){
+                if(day > date.day){
+                    return 1;
+                }else if(day == date.day){
+                    return 0;
+                }else {
+                    return -1;
+                }
+            }else {
+                return -1;
+            }
+        }else{
+            return -1;
+        }
     }
 }

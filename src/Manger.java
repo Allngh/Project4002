@@ -1,2 +1,2 @@
-public class Manger {
+public class Manger extends Person{
 }
