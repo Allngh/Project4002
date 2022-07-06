@@ -1,9 +1,10 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Customer extends Person{
-    boolean rentOrOwn;//true for own and false for rent
+    //boolean rentOrOwn;//true for own and false for rent
     House house;
 
     public void changeSitRequest(Situation situation) throws InvalidRequestException{
@@ -19,8 +20,9 @@ public class Customer extends Person{
         //request to manager needs
     }
 
-    public Customer(boolean rentOrOwn,String name,String lastName,House house) {
-        this.rentOrOwn = rentOrOwn;
+    public Customer(String name,String lastName,House house,String password) {
+        super.password = password;
+        //this.rentOrOwn = rentOrOwn;
         super.name = name;
         super.lastName = lastName;
         this.house = house;
@@ -40,7 +42,11 @@ public class Customer extends Person{
     }
 
     public Map<Integer,PaymentReson> debts(){
-        return house.debtReson;
+        Map<Integer,PaymentReson> debtReson = new HashMap<>();
+        for(Payment p: house.debtReson){
+            debtReson.put(p.price,p.paymentReson);
+        }
+        return debtReson;
     }
 
 }

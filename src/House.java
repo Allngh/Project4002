@@ -9,10 +9,11 @@ public class House {
     final int meterage;
     final int numOfRooms;int numOfUser;
 
-    List<PaymentReson> paymentResonList;
-    Map<Integer,PaymentReson> debtReson = new HashMap<>();
+
+    List<Payment> debtReson = new ArrayList<>();
     List<Payment> paymentsHistory = new ArrayList<>();
     Situation situation;
+    List<String> warnings = new ArrayList<>();
 
     public void changeSituation(Situation situation){
         this.situation = situation;

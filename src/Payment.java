@@ -4,6 +4,8 @@ public class Payment {
      final int price;
      final PaymentReson paymentReson;
      final Date date;
+     Date payDate = null;
+
 
     public Payment(int price, PaymentReson paymentReson, Date date) {
         this.price = price;
