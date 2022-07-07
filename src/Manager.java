@@ -6,9 +6,5 @@ public class Manager extends Person{
         super.lastName = lastName;
         super.password = password;
     }
-
-    public boolean sendWarning(House house,Payment debt){
-        if((debt.payDate != null)&&(debt))
-
     }
-}
+

@@ -7,7 +7,8 @@ public class House {
     final int ID;
     final int floor;
     final int meterage;
-    final int numOfRooms;int numOfUser;
+    final int numOfRooms;
+    int numOfUser;
 
 
     List<Payment> debtReson = new ArrayList<>();
