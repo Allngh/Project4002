@@ -48,5 +48,4 @@ public class Customer extends Person{
         }
         return debtReson;
     }
-
 }

@@ -3,6 +3,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+enum Situation{
+    empty,rent,bought
+}
 public class House {
     final int ID;
     final int floor;
@@ -29,6 +32,3 @@ public class House {
     }
 }
 
-enum Situation{
-    empty,rent,bought
-}
