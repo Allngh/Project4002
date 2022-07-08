@@ -8,6 +8,7 @@ public class Main {
         houses.add(new House(2, 1, 70, 1, 2));
         houses.add(new House(3, 2, 100, 2, 3));
         houses.add(new House(4, 2, 70, 1, 1));
+
     }
 
     static List<Manager> managers = new ArrayList<>();
@@ -20,6 +21,9 @@ public class Main {
 
     static {
         customers.add(new Customer("a", "b", houses.get(0), "1234"));
+        customers.get(0).house.paymentsHistory.add(new Payment(120000,PaymentReson.elecBill,new Date(1,4,1401)));
+        customers.get(0).house.paymentsHistory.add(new Payment(200000,PaymentReson.apartmentCharge,new Date(30,3,1401)));
+        customers.get(0).house.paymentsHistory.add(new Payment(60000,PaymentReson.gasBill,new Date(2,3,1401)));
         customers.add(new Customer("Alireza", "Naghavi", houses.get(1), "1881"));
         customers.add(new Customer("Bagher", "Soroush", houses.get(2), "4000"));
         customers.add(new Customer("Navid", "Mahjoob", houses.get(1), "1111"));
@@ -94,7 +98,11 @@ public class Main {
                        // }
                         break;
                     case "p":
-                        System.out.println(customer.timedPayments());
+                        for (Payment p: customer.house.paymentsHistory)
+                        { System.out.println("Price:"+ p.price+" Tooman\nReson:"+ p.paymentReson+ "\nDate:"+ p.date.year+"/"
+                                +p.date.month+"/"+p.date.day+ "\n******");
+
+                        }
                         break;
                     case "fp": //show payments by fiter
                         System.out.println("eb for elecbil, gb for gasbill, wb for water bill," +
@@ -102,22 +110,40 @@ public class Main {
                         filterco = scanner.next();
                         switch (filterco) {
                             case "eb":
-                                System.out.println(customer.filteredPaymentList(PaymentReson.elecBill));
+                                for (Payment p: customer.filteredPaymentList(PaymentReson.elecBill))
+                                { System.out.println("Electrobill:" + p.price);
+
+                                }
                                 break;
                             case "gb":
-                                System.out.println(customer.filteredPaymentList(PaymentReson.gasBill));
+                                for (Payment p: customer.filteredPaymentList(PaymentReson.gasBill))
+                                { System.out.println("Gas bill:" + p.price);
+
+                                }
                                 break;
                             case "wb":
-                                System.out.println(customer.filteredPaymentList(PaymentReson.waterBill));
+                                for (Payment p: customer.filteredPaymentList(PaymentReson.waterBill))
+                                { System.out.println("Water bill::" + p.price);
+
+                                }
                                 break;
                             case "r":
-                                System.out.println(customer.filteredPaymentList(PaymentReson.rent));
+                                for (Payment p: customer.filteredPaymentList(PaymentReson.rent))
+                                { System.out.println("Rent price:" + p.price);
+
+                                }
                                 break;
                             case "c":
-                                System.out.println(customer.filteredPaymentList(PaymentReson.apartmentCharge));
+                                for (Payment p: customer.filteredPaymentList(PaymentReson.apartmentCharge))
+                                { System.out.println("Apartment charge:" + p.price);
+
+                                }
                                 break;
                             case "m":
-                                System.out.println(customer.filteredPaymentList(PaymentReson.mortgage));
+                                for (Payment p: customer.filteredPaymentList(PaymentReson.mortgage))
+                                { System.out.println("Mortgage price:" + p.price);
+
+                                }
                                 break;
                             default:
                                 System.out.println("wrong command");
@@ -133,9 +159,16 @@ public class Main {
                         day2 = scanner.nextInt();
                         mon2 = scanner.nextInt();
                         yr2 = scanner.nextInt();
-                        System.out.println(customer.timeFilterPaymentList(new Date(day1, mon1, yr1),
-                                new Date(day2, mon2, yr2)));
-                            break;
+                        //System.out.println(customer.timeFilterPaymentList(new Date(day1, mon1, yr1),
+                          //      new Date(day2, mon2, yr2)));
+                        for (Payment p: customer.timeFilterPaymentList(new Date(day1,mon1,yr1),new Date(
+                                day2,mon2,yr2)))
+                        { System.out.println("Price:"+ p.price+" Tooman\nReson:"+ p.paymentReson+ "\nDate:"+ p.date.year+"/"
+                                +p.date.month+"/"+p.date.day+ "\n******");
+
+                        }
+
+                        break;
                     case "e":
                         break outer;
                 }
